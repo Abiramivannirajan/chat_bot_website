@@ -1,0 +1,63 @@
+<app-jobseeker-nav-bar></app-jobseeker-nav-bar>
+  
+  <div class="job-seeker-home">
+
+    <h1><marquee class="marquee-text">Welcome to DreamPath Guidance</marquee></h1>
+
+
+    <img src="assets/job.jpg" width="1150" height="500">
+
+
+    <!-- Dream Path Guidance Section -->
+    <section class="dream-path">
+
+      <h2>{{ dreamPathText }}</h2>
+  
+      <p>{{ dreamPathDescription }}</p>
+
+        <button [routerLink]="['/discover-free-courses']" class="get-started-btn">Get Started Our Free Courses</button>
+
+    </section>
+ 
+    <!-- Features Section -->
+
+<section class="features">
+  <div class="feature" *ngFor="let feature of features">
+    <h4>{{ feature.title }}</h4>
+    <p>{{ feature.description }}</p>
+    <button [routerLink]="getRouteForFeature(feature)">{{ feature.button }}</button>
+  </div>
+</section>
+
+  
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+      <h3>Why People Choose Us</h3>
+      <div class="reason" *ngFor="let reason of whyPeopleChooseUs">
+        <h4>{{ reason.title }}</h4>
+        <p>{{ reason.description }}</p>
+      </div>
+    </section>
+  
+    <!-- FAQ Section -->
+    <section class="faq">
+      <h3>Frequently Asked Questions</h3>
+      <img src="assets/faq.jpg" width="1000" height="400">
+      <div class="faq-item" *ngFor="let item of faq">
+        <h4>{{ item.question }}</h4>
+        <p>{{ item.answer }}</p>
+      </div>
+    </section>
+  
+    <!-- Footer Section -->
+    <footer>
+      <ul>
+        <li *ngFor="let link of footerLinks">
+          <a [href]="link.link">{{ link.name }}</a>
+        </li>
+      </ul>
+      <p>© 2025 Job Seeker Platform. All Rights Reserved.</p>
+    </footer>
+  
+  </div>
+  

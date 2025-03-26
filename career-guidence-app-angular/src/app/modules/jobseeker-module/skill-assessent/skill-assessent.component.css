@@ -1,0 +1,404 @@
+
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  line-height: 1.6;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #5094dd;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-brand a {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  background-color: #0056b3;
+  color: #ffd700;
+}
+
+/* Mobile Navigation */
+.navbar-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .navbar-toggle {
+      display: block;
+  }
+
+  .navbar-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      background-color: #007bff;
+      padding: 1rem;
+  }
+
+  .navbar-links.active {
+      display: flex;
+  }
+
+  .navbar-links a {
+      text-align: left;
+      width: 100%;
+      padding: 0.8rem;
+  }
+}
+/* General Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e3f2fd; /* Light blue background */
+}
+
+/* Main Container */
+.container {
+  display: flex;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #749ece; /* Dark blue */
+  color: white;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h3 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+.sidebar ul li a:hover {
+  background-color: #b2cee7; /* Lighter blue */
+}
+
+/* Main Assessment Content */
+.assessment-container {
+  margin-left: 270px; /* Space for sidebar */
+  padding: 20px;
+  max-width: 900px;
+}
+
+/* Heading Styling */
+.heading {
+  font-size: 28px;
+  text-align: center;
+  color: #91cbec; /* Deep blue */
+  margin-bottom: 20px;
+}
+
+/* Assessment Info Section */
+.assessment-info {
+  background-color: #bbdefb; /* Light blue */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+  /* General styling for the assessment-info section */
+.assessment-info {
+  background-color: #f9f9f9; /* Light background color for contrast */
+  padding: 20px; /* Add some padding to the content */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 800px; /* Maximum width for the section */
+  margin: 20px auto; /* Center the section horizontally */
+}
+
+/* Heading styles */
+.assessment-info h3 {
+  font-size: 24px; /* Larger font size for the heading */
+  color: #333; /* Dark color for text */
+  margin-bottom: 15px; /* Space between the heading and content */
+  font-weight: bold; /* Bold heading */
+}
+
+/* Paragraph styling */
+.assessment-info p {
+  font-size: 16px; /* Slightly larger font for readability */
+  line-height: 1.6; /* Increase line height for better spacing */
+  color: #555; /* Lighter gray for text */
+  margin-bottom: 15px; /* Space between paragraphs */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .assessment-info {
+    padding: 15px; /* Less padding on smaller screens */
+  }
+
+  .assessment-info h3 {
+    font-size: 20px; /* Smaller heading on smaller screens */
+  }
+
+  .assessment-info p {
+    font-size: 14px; /* Smaller text for better readability on mobile */
+  }
+}
+
+
+
+.assessment-container {
+  background: linear-gradient(to right, #e3f2fd, #90caf9); /* Enhanced light blue gradient */
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  max-width: 650px;
+  margin: 50px auto;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+} 
+
+/* Heading style */
+.heading {
+  color: #0d47a1; /* Darker deep blue */
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 35px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Styling the form */
+.assessment-form {
+  background-color: #f5f5f5; /* Softer background */
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Container for each question */
+.question-container {
+  margin-bottom: 30px;
+}
+
+/* Styling the question text */
+.question-text {
+  font-size: 1.3rem;
+  color: #37474f; /* Deep gray */
+  font-weight: 700;
+}
+
+.radio-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.radio-option p {
+  font-size: 15px;
+  color: #555;
+  margin-top: 6px;
+}
+
+/* Radio button styling */
+.radio-label {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  padding: 12px;
+  border: 2px solid #42a5f5; /* Updated blue */
+  border-radius: 10px;
+  background: #e3f2fd; /* Lightest blue */
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  margin: 0 5px;
+}
+
+/* Hover and checked states */
+input[type="radio"]:hover + .radio-label {
+  background-color: #64b5f6; /* Medium blue */
+  color: white;
+  transform: scale(1.07);
+}
+
+input[type="radio"]:checked + .radio-label {
+  background-color: #0d47a1; /* Stronger blue */
+  color: white;
+  box-shadow: 0 0 10px rgba(13, 71, 161, 0.7);
+}
+
+/* Submit button */
+.submit-btn {
+  background: linear-gradient(45deg, #1e88e5, #0d47a1); /* Enhanced gradient */
+  color: white;
+  padding: 14px 35px;
+  font-size: 18px;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(45deg, #0d47a1, #0b3d91); /* Darker gradient */
+  transform: scale(1.08);
+}
+
+/* Smooth transition effects */
+button, .radio-label {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .assessment-container {
+      padding: 25px;
+      margin: 15px;
+  }
+
+  .submit-btn {
+      width: 100%;
+      padding: 16px;
+  }
+
+  
+}
+
+/* assessment.component.css */
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of everything */
+}
+
+/* Pop-up Box */
+.popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  text-align: center;
+}
+
+.popup-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.popup-body p {
+  font-size: 16px;
+  color: #555;
+  margin: 20px 0;
+}
+
+.popup-footer button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.popup-footer button:hover {
+  background-color: #0056b3;
+} 
+
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background: url('../../../../assets/images ass.png') no-repeat center center/cover; /* Adjust the image path */
+  filter: blur(10px); /* Blur Effect */
+  z-index: -1; /* Send it behind other content */
+}

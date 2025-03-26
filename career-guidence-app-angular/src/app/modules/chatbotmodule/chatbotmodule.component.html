@@ -1,0 +1,26 @@
+<div class="chat-container" [ngClass]="{'dark-theme': isDarkTheme}">
+  <div class="chat-header">
+      Chatbot 
+      <button class="theme-toggle-btn" (click)="toggleTheme()">
+          {{ isDarkTheme ? '☀️' : '🌙' }}
+      </button>
+  </div>
+  
+  <div class="chat-box" #chatBox >
+    <div *ngFor="let message of messages"   
+         [ngClass]="{'chat-bubble': true, 'user-message': message.sender === 'user', 'bot-message': message.sender === 'bot'}">
+      {{ message.text }}
+    </div>
+  </div>
+
+  <!-- Chat Input (Always at Bottom) -->
+  <div class="chat-input">
+    <input [(ngModel)]="userMessage" 
+           type="text" 
+           placeholder="Type your message..." 
+           (keyup.enter)="sendMessage()" />
+    
+    <button class="send-btn" (click)="sendMessage()">📩</button>
+    <button class="mic-btn" (click)="startListening()">🎤</button>
+  </div>
+</div>

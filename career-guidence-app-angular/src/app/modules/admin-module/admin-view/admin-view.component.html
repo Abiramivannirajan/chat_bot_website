@@ -1,0 +1,170 @@
+<div class="admin-container"></div>
+  <h1>Admin Dashboard</h1>
+<button [routerLink]='["/common-login"]'>Logout
+</button>
+  <!-- Action Buttons -->
+  <div class="actions">
+    <button (click)="openForm('courses')">Add Course</button>
+    <button (click)="openForm('substream')">Add Substream</button>
+     <button (click)="openForm('job')">Add Job</button>
+     <button (click)="openForm('mockInterviewQuestions')">mockInterviewQuestions</button>
+     <button (click)="openForm('addcarddetails')">add jobcourse</button>
+  </div>
+
+  <!-- User List -->
+  <div class="section">
+    <h2>Registered Users</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+      <tr *ngFor="let user of User">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Existing Mock Interview Questions -->
+  <div class="section">
+    <h2>Existing Mock Interview Questions</h2>
+    <div *ngFor="let question of mockInterviewQuestions">
+      <p>{{ question.question }}</p>
+     
+    </div>
+  </div>
+
+  <!-- Forms Section -->
+  <div class="form-section">
+    <!-- Add Course Form -->
+    <div *ngIf="coursesform" class="form-container">
+      <h2>Add Course</h2>
+      <input type="text" placeholder="Stream Name" [(ngModel)]="newcourses.data.stream_Name" required>
+      <input type="text" placeholder="Description" [(ngModel)]="newcourses.data.description" required>
+      <input type="text" placeholder="Image URL" [(ngModel)]="newcourses.data.imageUrl" required>
+      <input type="text" placeholder="Colleges" [(ngModel)]="newcourses.data.colleges" required>
+      <button (click)="addCoursesAndColleges()">Submit</button>
+      <button (click)="closeForm()">Cancel</button>
+    </div>
+
+    <!-- Add Substream Form -->
+    <div *ngIf="substreamform" class="form-container">
+      <h2>Add Substream</h2>
+      <select [(ngModel)]="newstream.data.streamId">
+        <option *ngFor="let key of streamNameIdMap.keys()" [value]="streamNameIdMap.get(key)">{{ key }}</option>
+      </select>
+      <input type="text" placeholder="Substream Name" [(ngModel)]="newstream.data.substream_Name" required>
+      <input type="text" placeholder="Description" [(ngModel)]="newstream.data.description" required>
+      <input type="text" placeholder="Duration" [(ngModel)]="newstream.data.duration" required>
+      <input type="text" placeholder="Image URL" [(ngModel)]="newstream.data.imageurl" required>
+      <input type="text" placeholder="Extra Description" [(ngModel)]="newstream.data.extraDescription" required>
+      <input type="text" placeholder="Extra Image URL" [(ngModel)]="newstream.data.extraImageUrl" required>
+      <button (click)="addSubstream()">Submit</button>
+      <button (click)="closeForm()">Cancel</button>
+    </div>
+
+    <!-- Add Pricing Plan Form -->
+    <div *ngIf="formVisible" class="form-container">
+      <h2>Add Pricing Plan</h2>
+      <input type="text" placeholder="Plan Name" [(ngModel)]="newPlan.data.planName" required>
+      <input type="text" placeholder="Description" [(ngModel)]="newPlan.data.description" required>
+      <input type="number" placeholder="Price" [(ngModel)]="newPlan.data.price" required>
+      <input type="text" placeholder="Duration" [(ngModel)]="newPlan.data.duration" required>
+      
+      <button (click)="closeForm()">Cancel</button>
+    </div>
+
+    <!-- Add Job Form -->
+    <div *ngIf="jobform" class="form-container">
+      <h2>Add Job</h2>
+      <input type="text" placeholder="Company Name" [(ngModel)]="newJob.data.companyName" required>
+      <input type="text" placeholder="Location" [(ngModel)]="newJob.data.location" required>
+      <input type="text" placeholder="Job Role" [(ngModel)]="newJob.data.jobRole" required>
+      <input type="email" placeholder="Email" [(ngModel)]="newJob.data.email" required>
+      <input type="text" placeholder="Apply Link" [(ngModel)]="newJob.data.applyLink" required>
+      <input type="text" placeholder="Description" [(ngModel)]="newJob.data.description" required>
+      <input type="number" placeholder="Salary" [(ngModel)]="newJob.data.salary" required>
+      <input type="text" placeholder="Experience" [(ngModel)]="newJob.data.experience" required>
+      <button (click)="addJobdetails()">Submit</button>
+      <button (click)="closeForm()">Cancel</button>
+    </div>
+
+    <!-- Add New Question Form -->
+    <div class="form-container">
+      <h2>Add Mock Interview Question</h2>
+      <form (ngSubmit)="submit()">
+        <label>Question:</label>
+        <input type="text" [(ngModel)]="question" name="question" required />
+
+        <label>Options:</label>
+        <input type="text" [(ngModel)]="options[0]" name="option1" placeholder="Option 1" required />
+        <input type="text" [(ngModel)]="options[1]" name="option2" placeholder="Option 2" required />
+        <input type="text" [(ngModel)]="options[2]" name="option3" placeholder="Option 3" required />
+        <input type="text" [(ngModel)]="options[3]" name="option4" placeholder="Option 4" required />
+
+        <label>Correct Answer:</label>
+        <select [(ngModel)]="correctAnswer" name="correctAnswer">
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+          <option value="option4">Option 4</option>
+        </select>
+
+        <label>Marks:</label>
+        <input type="number" [(ngModel)]="marks" name="marks" required />
+
+        <button type="submit">Add Question</button>
+
+
+        <button (click)="addJobdetails()">Submit</button>
+        <button (click)="closeForm()">Cancel</button>
+      </form>
+    </div>
+
+    <!-- Add New Card -->
+    <div class="form-container">
+      <h2>Add New Card</h2>
+      <form>
+        <input type="text" placeholder="Image URL" [(ngModel)]="imageUrl" name="imageUrl" required />
+        <input type="text" placeholder="Title" [(ngModel)]="title" name="title" required />
+        <textarea placeholder="Description" [(ngModel)]="description" name="description" required></textarea>
+        <input type="text" placeholder="Duration" [(ngModel)]="duration" name="duration" required />
+        <input type="text" placeholder="Department" [(ngModel)]="department" name="department" required />
+        <input type="text" placeholder="Video link" [(ngModel)]="video_link" name="department" required />
+        <button (click)="addcarddetails()">Add Card</button>
+        <button (click)="closeForm()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+<!-- 
+<div *ngIf="jobform" class="form-container">
+  <h2>Add Job Fair</h2>
+  
+  <input type="text" placeholder="Job Fair ID" [(ngModel)]="newJobFair.data.jobFairID" required>
+  
+
+  <input type="text" placeholder="Job Fair Name" [(ngModel)]="newJobFair.data.jobFairName" required>
+
+  <input type="text" placeholder="Organised By" [(ngModel)]="newJobFair.data.organisedBy" required>
+  
+  <input type="text" placeholder="Job Fair Venue" [(ngModel)]="newJobFair.data.jobFairVenue" required>
+  
+  
+  <input type="number" placeholder="No. of Participating Job Seekers" [(ngModel)]="newJobFair.data.participatingSeekers" required>
+  
+  <input type="text" placeholder="Employer Participation Date/Time" [(ngModel)]="newJobFair.data.employerParticipation" required>
+  
+ 
+  <input type="text" placeholder="Job Seeker Participation Date/Time" [(ngModel)]="newJobFair.data.jobSeekerParticipation" required>
+  
+
+  <textarea placeholder="Job Fair Description" [(ngModel)]="newJobFair.data.jobFairDescription" required></textarea>
+  
+ 
+  <button (click)="addJobFairDetails()">Submit</button>
+  
+
+  <button (click)="closeForm()">Cancel</button>
+</div>  -->

@@ -1,0 +1,25 @@
+<nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <a routerLink="/">DreamPath Guidance</a>
+      </div>
+      <ul class="navbar-links">
+        <li><a routerLink="/job-seeker-home-page">Home</a></li>
+        <li><a routerLink="/interview-prepare">Interview Preparation</a></li>
+        <li><a routerLink="/skill-assessment">Skill Assessment</a></li>
+        <li><a routerLink="/find">Find Your Jobs</a></li>
+        
+        <!-- Conditionally show the user's name if they are logged in -->
+        <span class="profile-name" *ngIf="currentUser">{{ currentUser }}</span>
+        
+        <li>  
+          <!-- Show Login link if no user is logged in, else show Logout -->
+          <a routerLink="/common-login" *ngIf="!currentUser; else logoutButton">Login</a>
+          <ng-template #logoutButton>
+            <a (click)="logOut()">Logout</a>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  

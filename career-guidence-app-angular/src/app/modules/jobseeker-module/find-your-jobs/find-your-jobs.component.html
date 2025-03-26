@@ -1,0 +1,87 @@
+<app-jobseeker-nav-bar></app-jobseeker-nav-bar>
+<div class="background-container"></div>
+<div *ngIf="isLoading" class="loading">Loading jobs...</div>
+
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+<div *ngIf="!isLoading && !errorMessage">
+  <div class="sidebar">
+    <div class="location-filter">
+      <label for="location">Select District:</label>
+      <select id="location" [(ngModel)]="selectedLocation" (change)="filterJobs()">
+        <option value="">All Districts</option>
+        <option *ngFor="let district of tamilNaduDistricts" [value]="district">{{ district }}</option>
+      </select>
+    </div>
+
+    <div class="salary-filter">
+      <label for="salary">Select Salary Range:</label>
+      <select id="salary" [(ngModel)]="selectedSalaryRange" (change)="filterJobs()">
+        <option value="">All Salaries</option>
+        <option value="20000-30000">20,000 to 30,000</option>
+        <option value="30000-50000">30,000 to 50,000</option>
+        <option value="50000">Above 50,000</option>
+      </select>
+    </div>
+
+    <select id="experience" [(ngModel)]="selectedExperience" (change)="filterJobs()">
+      <option value="">All Experience Levels</option>
+      <option value="0">Fresher</option>
+      <option value="1">1 Year</option>
+      <option value="2">2 Years</option>
+      <option value="3">Above 3 Years</option>
+    </select>
+    
+
+    <div class="search-container">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="filterJobs()"
+        placeholder="Search for jobs..."
+        class="search-input"
+      />
+    </div>
+    <div class="application-view" [routerLink]="'/application-view'">
+       <p>  view favorite</p>
+    </div>
+  </div>
+
+  <div class="job-list-container">
+    <div class="job-list-container">
+      <h2>Explore Exciting Career Opportunities</h2>
+      <p>
+        Discover your dream job from our curated list of openings across various industries. 
+        Use the search and filters to find jobs that match your skills, experience, and preferences.
+      </p>
+      <input type="text" name="searchbar" placeholder="Search for job" (input)="searchForJob()" [(ngModel)]="searchbarValue">
+    </div>
+    
+    <ul class="job-list">
+        <li *ngFor="let job of filteredJobs" class="job-card">
+            <h3>{{ job.data.jobRole }}</h3>
+            <p>{{ job.data.companyName }}</p>
+            <p>{{ job.data.location }}</p>
+            <p>{{ job.data.experience }}</p>
+            <p><strong>Job Description:</strong> {{ job.data.description }}</p>
+            <p><strong>Salary:</strong> {{ job.data.salary }}</p>
+            <p><strong>Email:</strong> <a href="mailto:{{ job.data.email }}">{{ job.data.email }}</a></p>
+          
+            <button [routerLink]="['/form']" class="apply-link" (click)="apply()">Apply Here</button>
+          
+            <span *ngIf="getJobStatus(job._id) === 'favorite'" class="status-label favorite">★ Favorite</span>
+        <span *ngIf="getJobStatus(job._id) === 'applied'" class="status-label applied">✔ Applied</span>
+        <span *ngIf="getJobStatus(job._id) === 'hired'" class="status-label hired">🎉 Hired</span>
+        <span *ngIf="getJobStatus(job._id) === 'rejected'" class="status-label rejected">❌ Rejected</span>
+
+        <!-- Show 'Add to Favorite' button only if not already favorite -->
+        <button *ngIf="getJobStatus(job._id) === ''" 
+                (click)="markFavorite(job._id)" 
+                class="favorite-btn">
+            Add to Favorites
+        </button>
+          </li>
+          
+    </ul>
+  </div>
+</div>

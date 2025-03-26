@@ -1,0 +1,58 @@
+<app-jobseeker-nav-bar></app-jobseeker-nav-bar>
+ 
+<div class="background-container"></div>
+  <!-- Main Content -->
+  <div class="assessment-container">
+    <h2 class="heading">Skill Assessment</h2>
+
+    <!-- Additional Information Section -->
+    <div class="assessment-info" id="welcome">
+      <h3>Welcome to the Skill Assessment!</h3>
+      <p>This assessment helps evaluate your knowledge across various skill categories. Please rate your proficiency for each question on a scale of 1 to 5, where 1 represents "Beginner" and 5 represents "Expert".</p>
+      <p>After completing the assessment, click the "Submit" button to receive a predicted score based on your answers and the confidence level of the prediction.</p>
+    </div>
+
+    <!-- Assessment Form -->
+    <form class="assessment-form" id="questions">
+      <div *ngFor="let question of questions" class="question-container">
+        <h3 class="question-category">{{ question.category }}</h3>
+        <p class="question-text">{{ question.question }}</p>
+
+        <!-- Display radio buttons for each level -->
+        <div class="radio-buttons">
+          <div *ngFor="let level of [1, 2, 3, 4, 5]" class="radio-option">
+            <input 
+              type="radio" 
+              name="question{{ question.id }}" 
+              [value]="level" 
+              (change)="answers[question.id] = getAnswer(level)" 
+              id="level{{ question.id }}_{{ level }}">
+            <label for="level{{ question.id }}_{{ level }}" class="radio-label">{{ level }}</label>
+            <p class="knowledge-level">Knowledge Level {{ level }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="button" class="submit-btn" (click)="submitAnswers()">Submit</button>
+    </form>
+
+    <!-- Display Predicted Score -->
+    <div *ngIf="predictedScore" class="result-container" id="results">
+      <h3>Predicted Score: {{ predictedScore }}</h3>
+    </div>
+  </div>
+  
+  <div *ngIf="showPopup" class="overlay">
+    <div class="popup">
+      <div class="popup-header">
+        <h1>{{ popupTitle }}</h1>
+      </div>
+      <div class="popup-body">
+        <p>{{ popupMessage }}</p>
+      </div>
+      <div class="popup-footer">
+        <button (click)="closePopup()">Continue</button>
+      </div>
+    </div>
+  </div>

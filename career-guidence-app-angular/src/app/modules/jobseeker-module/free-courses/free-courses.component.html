@@ -1,0 +1,64 @@
+<app-jobseeker-nav-bar></app-jobseeker-nav-bar>
+
+<div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Departments</h2>
+      <div class="sidebar-items">
+        <div *ngFor="let department of departments; let i = index" 
+             [class.active]="activeIndex === i" 
+             (click)="setActiveIndex(i)">
+          <span>{{ department }}</span>
+          <span>&gt;</span>
+        </div>
+      </div>
+      <button *ngIf="selectedDepartment" (click)="selectedDepartment = null; updateVisibleCards()">Show All</button>
+    </aside>
+  
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1>Available Courses</h1>
+  
+      <!-- Grid Layout -->
+      <div class="grid">
+        <div *ngFor="let card of visibleCards" class="card">
+          <img [src]="card.imageUrl" alt="Card Image" class="card-image" />
+          <h2>{{ card.title }}</h2>
+          <p>{{ card.description }}</p>
+          <p class="duration">Duration: {{ card.duration }}</p>
+          <p class="department">Department: {{ card.department }}</p>
+          <div class="buttons-container">
+            <!-- <button class="view-course">View Course</button> -->
+            <button class="enroll-now" (click)="openModal(card.video_link)">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+      
+    
+       <button class="view-toggle" (click)="toggleView()">
+        {{ showAll ? "View Less" : "View More" }}
+       </button>
+     
+    </main>
+  </div>
+
+  <div *ngIf="isModalOpen" class="modal-overlay">
+    <div class="modal-content">
+      <!-- Close Button -->
+      <button class="close-button" (click)="closeModal()">&times;</button>
+  
+      <!-- Heading and Description -->
+      <h1>Enroll Now</h1>
+      <p>Watch the course introduction video:</p>
+  
+      <!-- YouTube Embed with SafeResourceUrl -->
+      <iframe 
+        *ngIf="selectedVideoLink"
+        width="100%" 
+        height="400" 
+        [src]="selectedVideoLink"
+        title="Course Introduction Video"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>

@@ -1,0 +1,13 @@
+<app-nav-bar></app-nav-bar>
+<div class="substreamdetails-container">
+  <div class="substreamdetails-card" *ngFor="let subStream of substreamdetails">
+    <img [src]="subStream.data.extraImageUrl" alt="Course Image" class="course-image" />
+    <div class="course-details">
+      <h3>{{ subStream.data.duration }}</h3>
+      <p>{{ subStream.data.extraDescription }}</p>
+    </div>
+  </div>
+</div>
+<div *ngFor="let college of colleges">
+  {{college.collegeName}}
+</div>

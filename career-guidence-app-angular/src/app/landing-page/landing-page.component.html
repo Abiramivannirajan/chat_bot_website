@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar-menu li {
+            display: inline;
+        }
+        .navbar-menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .navbar-menu li a:hover {
+            text-decoration: underline;
+        }
+        .home-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            background: linear-gradient(to right, rgb(125, 188, 224), rgb(149, 191, 226));
+            color: white;
+            text-align: center;
+            padding: 50px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .home-content {
+            max-width: 50%;
+        }
+        .home-image-container {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            animation: slideIn 1.5s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .home-image-container img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+        .features-container {
+            background: #f0f0f0;
+            padding: 50px;
+            text-align: center;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+        @keyframes fadeInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .features-container h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .features-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 30%;
+            transition: transform 0.3s ease-in-out;
+        }
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+
+        .service-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #819db9;
+            padding: 50px;
+            height: 50vh;
+            text-align: center;
+        }
+        .service-container .image-container {
+            width: 40%;
+        }
+.service-container .image-container img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+        .service-container .service-content {
+            width: 50%;
+            padding: 20px;
+        }
+        .footer {
+            background: #dee9eb;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 18px;
+        }
+        .footer .footer-links {
+            margin-bottom: 10px;
+        }
+        .footer .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .footer p {
+            margin-top: 10px;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo"> DreamPath Guidance</div>
+        <ul class="navbar-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a [routerLink]="['/common-login']">login</a> </li>
+        </ul>
+    </nav>
+    
+    <div id="home" class="home-container">
+        <div class="home-content">
+            <h1>Welcome to DreamPath Guidance</h1>
+            <p>
+                Empowering you with the right skills, guidance, and opportunities to accelerate your career journey.
+                
+                </p>
+           
+            <button [routerLink]="['/common-login']"> Get Started </button>
+        </div>
+        <div class="home-image-container">
+            <img src="\assets\front.webp" alt="Home Image"[height]="400"[width]="50">
+        </div>
+    </div>
+
+    <div id="features" class="features-container">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <img src="/assets/skill.jpg" alt="Logo">
+                <h3></h3>
+                <p>.</p>
+            </div>
+            <div class="feature-card">
+                <img src="/assets/words.jpg" alt="Logo">
+                <h3></h3>
+                <p></p>
+            </div>
+            <div class="feature-card">
+                <img src="/assets/download.jpg" alt="Logo">
+                <h3></h3>
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <div class="home-image-container">
+        <img src="/assets/test.jpg" alt="Home Image"[height]="400"[width]="100">
+    </div>
+    <div class="service-content">
+        <h2>Our Services</h2>
+        <p>We provide a wide range of services to support your growth.</p>
+    </div>
+   
+
+    <div id="services" class="service-container">
+        <div class="image-container">
+            <img src="/assets/servicesss.jpg" alt="Service Image">
+
+        </div>
+    
+        <div class="service-content">
+            <h2>Our Services</h2>
+            <p>We provide a wide range of services to support your growth. From web development to digital marketing, our expert team delivers customized solutions to elevate your business. Additionally, we offer career guidance to help you navigate your professional journey with confidence.</p>
+        </div>
+    </div>
+    
+    <div id="contact" class="footer">
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        <p>&copy; 2025 My Landing Page. All rights reserved.</p>
+    </div>
+</body>
+</html>
+

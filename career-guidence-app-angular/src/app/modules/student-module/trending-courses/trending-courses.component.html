@@ -1,0 +1,33 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <!-- Search Bar -->
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Search Courses..." class="search-bar" />
+
+  <!-- Filtered Course Details -->
+  <div *ngFor="let course of courseDetails">
+    <div class="card" *ngIf="course.title.toLowerCase().includes(searchTerm.toLowerCase())">
+      <div class="image-container">
+        <img [src]="course.imagelocation" alt="Course Image" />
+      </div>
+      <div class="content">
+        <h2>{{ course.title }}</h2>
+        <p>{{ course.paragraph }}</p>
+        <button (click)="apply(course.title)">{{ course.button }}</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Courses from Database -->
+  <div *ngFor="let course of courseFromDB">
+    <div class="card" *ngIf="course.coursedescription.toLowerCase().includes(searchTerm.toLowerCase())">
+      <div class="image-container">
+        <img [src]="course.imageUrl" alt="Course Image" />
+      </div>
+      <div class="content">
+        <h2>{{ course.coursename }}</h2>
+        <p>{{ course.coursedescription }}</p>
+        <button (click)="apply(course)">{{ course.button }}</button>
+      </div>
+    </div>
+  </div>
+</div>

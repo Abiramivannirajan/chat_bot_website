@@ -1,0 +1,88 @@
+
+<app-jobseeker-nav-bar></app-jobseeker-nav-bar>
+<div class="background-container"></div>
+<div class="status-tracking-info">
+  <h2>Job Application Status Tracking</h2>
+  <p>
+    Tracking the status of your job applications is essential for managing your career progress effectively.
+  </p>
+  
+  <h3>Why Use This System?</h3>
+  <p>
+    This system helps you categorize job applications into different statuses—
+    <strong>Favorite, Applied, Joined, and Rejected</strong>—allowing you to stay organized.
+  </p>
+
+  <h3>How It Works</h3>
+  <p>
+    By dragging and dropping job entries, you can easily update their statuses as you progress through 
+    the hiring process. Whether you're shortlisting a job, awaiting a response, or have successfully 
+    joined a company, this visual tracking system ensures you never lose track of your job search journey.
+  </p>
+</div>
+
+<div class="container">
+  <!-- Favorite Column -->
+  <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'favorite')">
+    <h2>Favorite Jobs</h2>
+    <p>Drag and drop jobs here to mark them as favorites.</p>
+    <div class="dropzone">
+      <div *ngFor="let app of favorite;" 
+           class="draggable" 
+           draggable="true" 
+           (dragstart)="onDragStart(app)" 
+           [class.dragging]="draggedApp?.data?.applicationFormId === app.data.applicationFormId">
+        <h3>Job ID: {{ app.data.jobName }}</h3>
+        <p>Status: {{ app.data.applicationStatus }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Applied Column -->
+  <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'applied')">
+    <h2>Applied Jobs</h2>
+    <p>Jobs you have applied for will appear here.</p>
+    <div class="dropzone">
+      <div *ngFor="let app of applied" 
+           class="draggable" 
+           draggable="true" 
+           (dragstart)="onDragStart(app)" 
+           [class.dragging]="draggedApp?.data?.applicationFormId === app.data.applicationFormId">
+        <h3>Job ID: {{ app.data.jobName }}</h3>
+        <p>Status: {{ app.data.applicationStatus }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Joined Column -->
+  <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event,'hired')">
+    <h2> Hired Jobs</h2>
+    <p>Jobs you have successfully joined.</p>
+    <div class="dropzone">
+      <div *ngFor="let app of hired" 
+           class="draggable" 
+           draggable="true" 
+           (dragstart)="onDragStart(app)" 
+           [class.dragging]="draggedApp?.data?.applicationFormId === app.data.applicationFormId">
+        <h3>Job ID: {{ app.data.jobName }}</h3>
+        <p>Status: {{ app.data.applicationStatus }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rejected Column -->
+  <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'rejected')">
+    <h2>Rejected Jobs</h2>
+    <p>Jobs that have been rejected.</p>
+    <div class="dropzone">
+      <div *ngFor="let app of rejected" 
+           class="draggable" 
+           draggable="true" 
+           (dragstart)="onDragStart(app)" 
+           [class.dragging]="draggedApp?.data?.applicationFormId === app.data.applicationFormId">
+        <h3>Job ID: {{ app.data.jobName }}</h3>
+        <p>Status: {{ app.data.applicationStatus }}</p>
+      </div>
+    </div>
+  </div>
+</div>

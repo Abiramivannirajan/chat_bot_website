@@ -1,0 +1,136 @@
+/* Form Container Styling */
+/* Styling for the Heading */
+h2 {
+  text-align: center; /* Center the heading */
+  color: #007bff; /* Blue color to match button theme */
+  font-size: 24px; /* Larger font size for visibility */
+  margin-bottom: 20px; /* Space below the heading */
+  font-weight: 600; /* Slightly bolder font for emphasis */
+  text-transform: uppercase; /* Optional: makes the text uppercase for a strong impact */
+}
+
+/* Styling for the Paragraph */
+p {
+  font-size: 16px; /* Comfortable font size for reading */
+  color: #3de4e4; /* Dark gray color for good contrast and readability */
+  text-align: center; /* Center the paragraph for consistency */
+  line-height: 1.6; /* Line height to improve readability */
+  margin-bottom: 20px; /* Adds space below the paragraph */
+  font-family: 'Arial', sans-serif; /* Set font family for uniformity */
+}
+.form-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fafafa;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Heading and Information */
+h2, h3 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+/* Label Styling */
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input and Select Styling */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+/* Input and Select Focus Effects */
+input:focus, select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* File Input Styling */
+input[type="file"] {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+/* Button Styling */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Disabled Button Styling */
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Paragraph Styling */
+p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 480px) {
+  .form-container {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  h2, h3 {
+    font-size: 18px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  input, select, button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background: url('../../../../assets/images ass.png') no-repeat center center/cover; /* Adjust the image path */
+  filter: blur(10px); /* Blur Effect */
+  z-index: -1; /* Send it behind other content */
+}
+

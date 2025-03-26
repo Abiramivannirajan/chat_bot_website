@@ -1,0 +1,33 @@
+
+<app-jobseeker-nav-bar></app-jobseeker-nav-bar>
+<div class="background-container"></div>
+
+
+<div class="info-section">
+  <!-- Information Section about MookInterview -->
+  <h1>Welcome to MockInterview!</h1>
+  <p>MockInterview is an innovative platform where you can practice mock interviews, get real-time feedback, and improve your interview skills. Our goal is to help you prepare for interviews with confidence and get hired faster.</p>
+</div>
+
+<div *ngFor="let question of questions; let i = index">
+  <p>{{ question.question }}</p>
+  <ul>
+    <li *ngFor="let option of question.options; let j = index" 
+        [ngClass]="{
+          'correct': answerStatus[i] === true && userAnswers[i] === 'option' + (j + 1),
+          'wrong': answerStatus[i] === false && userAnswers[i] === 'option' + (j + 1)
+        }" (click)="resetForm()">
+      <input 
+        type="radio" 
+        [(ngModel)]="userAnswers[i]" 
+        [value]="'option' + (j + 1)" 
+        [id]="'question' + i + '' + j"
+        [name]="'question' + i" /> 
+      <label [for]="'question' + i + '' + j">{{ option }}  
+       <span *ngIf="answerStatus[i] !== null && userAnswers[i] === 'option' + (j + 1) && totalMarks != 0">
+        {{ answerStatus[i] ? '✔' : '❌' }}
+      </span></label>
+    </li>
+  </ul>
+</div>
+<button (click)="submitAnswers()">Submit Answers</button>

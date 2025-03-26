@@ -1,0 +1,17 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a routerLink="/">DreamPath Guidance</a>
+    </div>
+    <ul class="navbar-links">
+      <li><a [routerLink]="'/home'" routerLinkActive="active">Home</a></li>
+      <li><a [routerLink]="'/trending-courses'" routerLinkActive="active">Trending Courses</a></li>
+      <li><a [routerLink]="'/stream'" routerLinkActive="active">After 12th</a></li>
+      <li><a [routerLink]="'/personal-assessment'" routerLinkActive="active">Personal Assessment</a></li>
+      <div class="profile-section" *ngIf="currentuser">
+        <span class="profile-name">{{ currentuser }}</span>
+        <button class="logout-btn" (click)="logout()">Logout</button>
+      </div> 
+    </ul>
+  </div>
+</nav>

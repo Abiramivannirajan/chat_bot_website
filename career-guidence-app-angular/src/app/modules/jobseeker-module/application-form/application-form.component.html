@@ -1,0 +1,66 @@
+<app-jobseeker-nav-bar></app-jobseeker-nav-bar>
+<div class="background-container"></div>
+<h2>Application Form</h2>
+<p>Please fill in the details below to submit your application. All fields are required, and make sure to upload your CV before submitting.</p>
+<div class="form-container">
+  <!-- formgroup  - holds value of form control -->
+    <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" type="text" required>
+
+      <label for="age">Age:</label>
+      <input id="age" formControlName="age" type="number" required>
+
+      <label for="gender">Gender:</label>
+      <select id="gender" formControlName="gender" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" required>
+
+      <label for="education">Education:</label>
+      <input id="education" formControlName="education" type="text" required>
+
+      <label for="cv">Upload CV:</label>
+      <input id="cv" type="file" (change)="onFileSelected($event)" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+
+ <!-- Custom Pop-up Overlay -->
+<!-- Success Pop-up -->
+<div *ngIf="showPopup" class="overlay">
+  <div class="popup">
+    <div class="popup-header">
+      <h1>{{ popupTitle }}</h1>
+    </div>
+    <div class="popup-body">
+      <p>{{ popupMessage }}</p>
+    </div>
+    <div class="popup-footer">
+      <button (click)="closePopup()">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- Error Pop-up -->
+<div *ngIf="showErrorPopup" class="overlay">
+  <div class="popup">
+    <div class="popup-header">
+      <h1>Error</h1>
+    </div>
+    <div class="popup-body">
+      <p>{{ errorMessage }}</p>
+    </div>
+    <div class="popup-footer">
+      <button (click)="closeErrorPopup()">Close</button>
+    </div>
+  </div>
+</div>
+

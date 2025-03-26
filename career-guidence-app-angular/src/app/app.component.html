@@ -1,0 +1,18 @@
+<div class="main-container">
+  <div class="side-container">
+    <div class="chatbot-container">
+      <div class="chatbotlogo">
+        <div class="chatbotext" *ngIf="routeval">
+          <div class="chat-container">
+            <div class="chat-box">
+                 <app-chatbotmodule></app-chatbotmodule>
+            </div>
+          </div>
+        </div>
+        <img src="\assets\Animation - 1737704467019.gif" (click)="route()" alt="Chatbot Toggle">
+      </div>
+    </div>
+  </div>
+  <router-outlet />
+</div>
+<router-outlet />
