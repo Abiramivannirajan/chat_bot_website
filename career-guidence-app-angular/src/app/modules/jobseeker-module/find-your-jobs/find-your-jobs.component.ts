@@ -134,7 +134,7 @@ export class FindYourJobsComponent implements OnInit {
     if (this.selectedExperience) {
       filtered = filtered.filter(job => {
         const experience :string | number = parseInt(job.data.experience.replace(/[^0-9.-]+/g, ""), 10);
-        console.log("Experinece", experience)  
+        console.log("experience", experience)  
         if (this.selectedExperience === '0') {
           console.log("Filterting zero....")
           return isNaN(experience); // Fresher is 0 years of experience
